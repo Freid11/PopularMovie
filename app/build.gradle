@@ -1,0 +1,73 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 27
+    defaultConfig {
+        applicationId "google.louco.com.popularmovies"
+        minSdkVersion 16
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "URL_FILM", "\"https://api.themoviedb.org/\""
+            buildConfigField "String", "URL_IMAGE_FILM", "\"https://image.tmdb.org/t/p/w185\""
+            buildConfigField "String", "KEY", "\"\""
+        }
+        debug {
+            buildConfigField "String", "URL_FILM", "\"https://api.themoviedb.org/\""
+            buildConfigField "String", "URL_IMAGE_FILM", "\"https://image.tmdb.org/t/p/w185\""
+            buildConfigField "String", "API_KEY", "\"\""
+        }
+
+    }
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:appcompat-v7:27.1.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+
+    compile 'com.android.support:recyclerview-v7:27.1.0'
+    compile 'com.android.support:cardview-v7:27.1.0'
+
+    //butterknife
+    compile 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+
+    //rx
+    compile "io.reactivex.rxjava2:rxandroid:2.0.1"
+    compile "io.reactivex.rxjava2:rxjava:2.1.5"
+
+    //retrofit+Adapter + internet
+    compile "com.squareup.retrofit2:retrofit:2.3.0"
+    compile "com.squareup.retrofit2:adapter-rxjava2:2.3.0"
+
+    //Converter + gson
+    compile "com.google.code.gson:gson:2.8.1"
+    compile "com.squareup.retrofit2:converter-gson:2.3.0"
+
+    //Загрузка изображения
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
+    //moxy
+    compile 'com.arello-mobile:moxy:1.5.3'
+    compile 'com.arello-mobile:moxy-android:1.5.3'
+    compile 'com.arello-mobile:moxy-app-compat:1.5.3'
+    annotationProcessor 'com.arello-mobile:moxy-compiler:1.5.3'
+
+    //SwipyRefreshLayout
+    compile 'com.github.omadahealth:swipy:1.2.3@aar'
+
+}

@@ -1,0 +1,51 @@
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/iv_poster_details"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_element_in_form"
+        android:layout_marginStart="@dimen/margin_element_in_form"
+        android:layout_marginTop="@dimen/margin_element_in_form"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/not_find" />
+
+    <TextView
+        android:id="@+id/tv_vote_average"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_element_in_form"
+        android:layout_marginEnd="@dimen/margin_element_in_form"
+        android:layout_marginStart="@dimen/margin_element_in_form"
+        android:gravity="end"
+        android:text="@string/user_score"
+        app:layout_constraintBottom_toTopOf="@+id/tv_date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/iv_poster_details" />
+
+    <TextView
+        android:id="@+id/tv_date"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_element_in_form"
+        android:layout_marginEnd="@dimen/margin_element_in_form"
+        android:layout_marginStart="@dimen/margin_element_in_form"
+        android:gravity="end"
+        app:layout_constraintBottom_toTopOf="@+id/tv_overview"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/iv_poster_details" />
+
+    <TextView
+        android:id="@+id/tv_overview"
+        android:textColor="@color/textOverview"
+        android:textSize="@dimen/text_overview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_element_in_form"
+        app:layout_constraintTop_toBottomOf="@+id/iv_poster_details"/>
+
+</android.support.constraint.ConstraintLayout>

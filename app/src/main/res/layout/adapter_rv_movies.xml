@@ -1,0 +1,9 @@
+<ImageView xmlns:adnroid="http://schemas.android.com/apk/res/android"
+    adnroid:id="@+id/iv_poster"
+    adnroid:layout_width="match_parent"
+    adnroid:layout_height="wrap_content"
+    adnroid:layout_gravity="center_horizontal"
+    adnroid:adjustViewBounds="true"
+    adnroid:background="@null"
+    adnroid:contentDescription="@string/not_find"
+    adnroid:scaleType="fitCenter" />
