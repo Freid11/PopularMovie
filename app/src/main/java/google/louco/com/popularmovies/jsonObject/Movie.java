@@ -9,27 +9,34 @@ import google.louco.com.popularmovies.mvp.model.JsonConverter;
  */
 public class Movie {
 
-    @SerializedName("id")
+    public static final String ID_MOVIE = "id";
+    public static final String TITLE = "original_title";
+    public static final String IMAGE_URL = "poster_path";
+    public static final String OVERVIEW = "overview";
+    public static final String VOTE_AVERAGE = "vote_average";
+    public static final String RELEASE_DATE = "release_date";
+
+    @SerializedName(ID_MOVIE)
     private final int ID;
 
-    @SerializedName("original_title")
+    @SerializedName(TITLE)
     private final String Title;
 
-    @SerializedName("poster_path")
+    @SerializedName(IMAGE_URL)
     private final String Image_Url;
 
-    @SerializedName("overview")
+    @SerializedName(OVERVIEW)
     private final String Overview;
 
-    @SerializedName("vote_average")
-    private final float VoteAverage;
+    @SerializedName(VOTE_AVERAGE)
+    private final String VoteAverage;
 
-    @SerializedName("release_date")
+    @SerializedName(RELEASE_DATE)
     private final String ReleaseDate;
 
     private boolean Favorite = false;
 
-    public Movie(int id, String title, String image_Url, String overview, float voteAverage, String releaseDate) {
+    public Movie(int id, String title, String image_Url, String overview, String voteAverage, String releaseDate) {
         ID = id;
         Title = title;
         Image_Url = image_Url;
@@ -54,7 +61,7 @@ public class Movie {
         return Overview;
     }
 
-    public float getVoteAverage() {
+    public String getVoteAverage() {
         return VoteAverage;
     }
 
@@ -66,9 +73,8 @@ public class Movie {
         return Favorite;
     }
 
-    public boolean swichFavorite() {
+    public void switchFavorite() {
         Favorite = !Favorite;
-        return Favorite;
     }
 
     /**

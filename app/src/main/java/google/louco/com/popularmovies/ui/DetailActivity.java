@@ -1,6 +1,7 @@
 package google.louco.com.popularmovies.ui;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
@@ -9,7 +10,6 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.widget.Adapter;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -106,7 +106,10 @@ public class DetailActivity extends MvpAppCompatActivity implements ViewDetail {
         RVAdapterVideo adapterVideo = new RVAdapterVideo(videos, new onClickVideos());
 
         DividerItemDecoration decoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
-        decoration.setDrawable(ContextCompat.getDrawable(this, R.drawable.line_rv));
+        Drawable SeparatorLine = ContextCompat.getDrawable(this, R.drawable.line_rv);
+
+        assert SeparatorLine != null;
+        decoration.setDrawable(SeparatorLine);
 
         rvVideo.addItemDecoration(decoration);
         rvVideo.setLayoutManager(new LinearLayoutManager(getBaseContext()));

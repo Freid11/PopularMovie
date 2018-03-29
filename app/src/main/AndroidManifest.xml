@@ -24,6 +24,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.MainActivity" />
         </activity>
+
+        <provider
+            android:authorities="google.louco.com.popularmovies.favorite"
+            android:name=".mvp.model.db.ContentFavorite"/>
     </application>
 
 </manifest>
