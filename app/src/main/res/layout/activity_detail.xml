@@ -1,51 +1,103 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <ImageView
         android:id="@+id/iv_poster_details"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/margin_element_in_form"
-        android:layout_marginStart="@dimen/margin_element_in_form"
+        android:layout_height="150dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="@dimen/margin_element_in_form"
+        android:contentDescription="@string/not_find"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="@string/not_find" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_vote_average"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/margin_element_in_form"
         android:layout_marginEnd="@dimen/margin_element_in_form"
         android:layout_marginStart="@dimen/margin_element_in_form"
+        android:layout_marginTop="@dimen/margin_element_in_form"
         android:gravity="end"
         android:text="@string/user_score"
-        app:layout_constraintBottom_toTopOf="@+id/tv_date"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/iv_poster_details" />
+        app:layout_constraintStart_toEndOf="@+id/iv_poster_details"
+        app:layout_constraintTop_toBottomOf="@+id/ib_favorite" />
 
     <TextView
         android:id="@+id/tv_date"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/margin_element_in_form"
         android:layout_marginEnd="@dimen/margin_element_in_form"
         android:layout_marginStart="@dimen/margin_element_in_form"
+        android:layout_marginTop="8dp"
         android:gravity="end"
-        app:layout_constraintBottom_toTopOf="@+id/tv_overview"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/iv_poster_details" />
+        app:layout_constraintStart_toEndOf="@+id/iv_poster_details"
+        app:layout_constraintTop_toBottomOf="@+id/tv_vote_average" />
 
-    <TextView
-        android:id="@+id/tv_overview"
-        android:textColor="@color/textOverview"
-        android:textSize="@dimen/text_overview"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin_element_in_form"
-        app:layout_constraintTop_toBottomOf="@+id/iv_poster_details"/>
+    <ImageButton
+        android:id="@+id/ib_favorite"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="@dimen/margin_element_in_form"
+        android:layout_marginRight="@dimen/margin_element_in_form"
+        android:layout_marginTop="@dimen/margin_element_in_form"
+        android:background="@null"
+        android:contentDescription="@string/error"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_star_border"
+        tools:ignore="VectorDrawableCompat" />
+
+    <ScrollView
+        android:id="@+id/sv_list"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="@dimen/margin_element_in_form"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_poster_details">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_overview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/margin_element_in_form"
+                android:textColor="@color/textOverview"
+                android:textSize="@dimen/text_overview" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_video"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/size"
+                android:gravity="center"
+                android:text="@string/review" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_review"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </ScrollView>
+
 
 </android.support.constraint.ConstraintLayout>

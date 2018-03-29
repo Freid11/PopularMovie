@@ -75,7 +75,10 @@ public class RVAdapterMovie extends RecyclerView.Adapter<RVAdapterMovie.ViewHold
             this.lastMovie = movie;
             String URL_IMAGE = BuildConfig.URL_IMAGE_FILM;
             String url_poster = URL_IMAGE + movie.getImage_Url();
-            Picasso.get().load(url_poster).into(poster);
+            Picasso.get()
+                    .load(url_poster)
+                    .error(R.drawable.ic_error)
+                    .into(poster);
         }
     }
 

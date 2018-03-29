@@ -1,0 +1,28 @@
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/dp4"
+    android:elevation="5dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_container_review"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_element_in_form"
+            android:textColor="@color/textOverview"
+            android:textSize="@dimen/size" />
+
+        <TextView
+            android:id="@+id/tv_author_review"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin_element_in_form"
+            android:layout_marginRight="@dimen/margin_element_in_form"
+            android:gravity="end" />
+    </LinearLayout>
+</android.support.v7.widget.CardView>

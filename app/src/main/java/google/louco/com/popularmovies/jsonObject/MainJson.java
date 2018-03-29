@@ -4,6 +4,9 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
+/**
+ * Основной класс выгрузки данных из API
+ */
 public class MainJson {
 
     @SerializedName("page")

@@ -1,0 +1,38 @@
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tv_name_video"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_element_in_form"
+        android:layout_marginEnd="@dimen/margin_element_in_form"
+        android:layout_marginStart="@dimen/margin_element_in_form"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:textColor="@color/textOverview"
+        android:textSize="@dimen/size"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="@dimen/margin_element_in_form"
+        android:layout_marginLeft="@dimen/margin_element_in_form"
+        android:layout_marginStart="@dimen/margin_element_in_form"
+        android:layout_marginTop="@dimen/margin_element_in_form"
+        android:contentDescription="@string/not_find"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_play"
+        tools:ignore="VectorDrawableCompat" />
+
+</android.support.constraint.ConstraintLayout>

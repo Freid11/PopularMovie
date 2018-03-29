@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -66,6 +67,7 @@ public class MainActivity extends MvpAppCompatActivity implements ViewMain{
 
     @Override
     public void showDetailMovie(Movie movie) {
+        Log.d("Louco", movie.getID()+"");
         Intent intent = new Intent(this, DetailActivity.class);
         intent.putExtra(PresenterDetail.KEY_INTENT_MOVIE, movie.toJson());
         startActivity(intent);
