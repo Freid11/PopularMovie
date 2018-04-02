@@ -64,6 +64,7 @@ public class DetailActivity extends MvpAppCompatActivity implements ViewDetail {
         setContentView(R.layout.activity_detail);
         ButterKnife.bind(this);
 
+        //Cursor cursor = getContentResolver().query(BASE_CONTENT_URI, new String[]{Movie.TITLE, Movie.IMAGE_URL},null,null,null);
     }
 
     @Override
@@ -71,7 +72,7 @@ public class DetailActivity extends MvpAppCompatActivity implements ViewDetail {
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) actionBar.setTitle(movie.getTitle());
 
-        Log.d("Louco", movie.getOverview());
+        Log.d("Louco", movie.toString());
 
         String URL_IMAGE = BuildConfig.URL_IMAGE_FILM;
 
@@ -88,7 +89,7 @@ public class DetailActivity extends MvpAppCompatActivity implements ViewDetail {
         tvOverview.setText(movie.getOverview());
         switchFavorite(movie.isFavorite());
 
-        ibFavorite.setOnClickListener(view -> presenter.setFavorite(movie));
+        ibFavorite.setOnClickListener(view -> presenter.setFavorite(movie, getContentResolver()));
     }
 
     private void switchFavorite(boolean favorite) {
@@ -98,7 +99,7 @@ public class DetailActivity extends MvpAppCompatActivity implements ViewDetail {
 
     @Override
     public void getIntentMovie() {
-        presenter.showDetail(getIntent());
+        presenter.showDetail(getIntent(), getContentResolver());
     }
 
     @Override

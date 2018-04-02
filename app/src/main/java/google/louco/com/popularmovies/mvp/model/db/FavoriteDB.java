@@ -12,9 +12,9 @@ public class FavoriteDB  extends SQLiteOpenHelper{
     private static final String TYPE_INT = " INTEGER";
     private static final int VERSION_DB = 1;
     private static final String SEPARATOR = " ,";
-    private static final String NAME_TABLE = "favorite_movie";
+    public static final String NAME_TABLE = "favorite_movie";
 
-    private static final String SQL_CREATE_TABLE = "Create table" + NAME_TABLE
+    private static final String SQL_CREATE_TABLE = "Create table " + NAME_TABLE
             +" ( ID_movie" + TYPE_INT+" PRIMARY KEY,"
             + Movie.ID_MOVIE + TYPE_INT + SEPARATOR
             + Movie.TITLE + TYPE_STRING + SEPARATOR

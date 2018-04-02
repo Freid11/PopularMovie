@@ -1,5 +1,7 @@
 package google.louco.com.popularmovies.jsonObject;
 
+import android.content.ContentValues;
+
 import com.google.gson.annotations.SerializedName;
 
 import google.louco.com.popularmovies.mvp.model.JsonConverter;
@@ -15,6 +17,8 @@ public class Movie {
     public static final String OVERVIEW = "overview";
     public static final String VOTE_AVERAGE = "vote_average";
     public static final String RELEASE_DATE = "release_date";
+    private static final String SEPARATOR = "\n";
+    private static final String SEPARATOR_TITLE_COUNT = ":  ";
 
     @SerializedName(ID_MOVIE)
     private final int ID;
@@ -80,16 +84,42 @@ public class Movie {
     /**
      * @return Возвращает json из Объекта
      */
-    public String toJson(){
+    public String toJson() {
         return JsonConverter.getGson().toJson(this);
     }
 
     /**
      * Преобразует json строку в объект {@link Movie}
+     *
      * @param json - строка
      * @return - возращает {@link Movie}
      */
-    public static Movie fromJson(String json){
+    public static Movie fromJson(String json) {
         return JsonConverter.getGson().fromJson(json, Movie.class);
+    }
+
+    public ContentValues getContentValue() {
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put(ID_MOVIE, ID);
+        contentValues.put(TITLE, Title);
+        contentValues.put(IMAGE_URL, Image_Url);
+        contentValues.put(OVERVIEW, Overview);
+        contentValues.put(VOTE_AVERAGE, VoteAverage);
+        contentValues.put(RELEASE_DATE, ReleaseDate);
+
+        return contentValues;
+    }
+
+    @Override
+    public String toString() {
+        String stringBuffer = ID_MOVIE + SEPARATOR_TITLE_COUNT + String.valueOf(ID) + SEPARATOR +
+                TITLE + SEPARATOR_TITLE_COUNT +  Title + SEPARATOR +
+                IMAGE_URL + SEPARATOR_TITLE_COUNT +  Image_Url + SEPARATOR +
+                OVERVIEW + SEPARATOR_TITLE_COUNT +  Overview + SEPARATOR +
+                VOTE_AVERAGE + SEPARATOR_TITLE_COUNT +  VoteAverage + SEPARATOR +
+                RELEASE_DATE + SEPARATOR_TITLE_COUNT +  ReleaseDate;
+
+        return stringBuffer;
     }
 }

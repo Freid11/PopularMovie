@@ -17,12 +17,14 @@ android {
             buildConfigField "String", "URL_FILM", "\"https://api.themoviedb.org/\""
             buildConfigField "String", "URL_IMAGE_FILM", "\"https://image.tmdb.org/t/p/w185\""
             buildConfigField "String", "URL_YOUTUBE", "\"https://www.youtube.com/watch?v=\""
+            buildConfigField "String", "URI_CONTENT", "\"google.louco.com.popularmovies.favorite\""
             buildConfigField "String", "API_KEY", "\"\""
         }
         debug {
             buildConfigField "String", "URL_FILM", "\"https://api.themoviedb.org/\""
             buildConfigField "String", "URL_IMAGE_FILM", "\"https://image.tmdb.org/t/p/w185\""
             buildConfigField "String", "URL_YOUTUBE", "\"https://www.youtube.com/watch?v=\""
+            buildConfigField "String", "URI_CONTENT", "\"google.louco.com.popularmovies.favorite\""
             buildConfigField "String", "API_KEY", "\"\""
         }
 

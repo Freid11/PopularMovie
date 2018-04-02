@@ -67,7 +67,6 @@ public class MainActivity extends MvpAppCompatActivity implements ViewMain{
 
     @Override
     public void showDetailMovie(Movie movie) {
-        Log.d("Louco", movie.getID()+"");
         Intent intent = new Intent(this, DetailActivity.class);
         intent.putExtra(PresenterDetail.KEY_INTENT_MOVIE, movie.toJson());
         startActivity(intent);
