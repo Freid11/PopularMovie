@@ -4,7 +4,7 @@
     <string name="top">Top</string>
     <string name="popular">Popular</string>
     <string name="user_score">User Score:</string>
-    <string name="favorite">Favorite</string>
     <string name="error">error</string>
     <string name="review">Review</string>
+    <string name="favorite">Favorite</string>
 </resources>

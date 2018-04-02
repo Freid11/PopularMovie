@@ -10,13 +10,10 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
-import google.louco.com.popularmovies.jsonObject.Movie;
 
 public class ContentFavorite extends ContentProvider {
 
     private FavoriteDB favorite;
-
-    public static final String TABLE_NAME = "favorite";
 
     public ContentFavorite() {
     }
@@ -32,9 +29,7 @@ public class ContentFavorite extends ContentProvider {
     @Override
     public Cursor query(@NonNull Uri uri, @Nullable String[] strings, String s, String[] strings1, String s1) {
         SQLiteDatabase database = favorite.getReadableDatabase();
-        Cursor cursor = null;
-
-        cursor = database.query(FavoriteDB.NAME_TABLE
+        Cursor cursor = database.query(FavoriteDB.NAME_TABLE
                 , strings
                 , s
                 , strings1

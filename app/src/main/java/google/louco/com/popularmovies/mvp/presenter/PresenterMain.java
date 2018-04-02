@@ -1,7 +1,13 @@
 package google.louco.com.popularmovies.mvp.presenter;
 
+import android.content.ContentResolver;
+import android.database.Cursor;
+
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import google.louco.com.popularmovies.jsonObject.MainJson;
 import google.louco.com.popularmovies.jsonObject.Movie;
@@ -47,6 +53,19 @@ public class PresenterMain extends MvpPresenter<ViewMain> {
         RequestFilmList(StatusList.RESET);
     }
 
+    public void ClickMenuFavorite(ContentResolver contentResolver) {
+        List<Movie> movies = new ArrayList<>();
+        Cursor cursor = contentResolver.query(PresenterDetail.BASE_CONTENT_URI,
+                null,
+                null,
+                null,
+                null);
+        while (cursor.moveToNext()) {
+            movies.add(Movie.fromCursor(cursor));
+        }
+        getViewState().rsMovieList(movies);
+    }
+
     private void RequestFilmList(StatusList statusList) {
         switch (filterMovie) {
             case TOP:
@@ -55,6 +74,7 @@ public class PresenterMain extends MvpPresenter<ViewMain> {
             case POPULAR:
                 RequestServer.getPopularMovie(Page, new ResponseServer(statusList));
                 break;
+
         }
     }
 
@@ -62,7 +82,7 @@ public class PresenterMain extends MvpPresenter<ViewMain> {
 
         private final StatusList statusList;
 
-        public ResponseServer(StatusList statusList) {
+        ResponseServer(StatusList statusList) {
             this.statusList = statusList;
         }
 

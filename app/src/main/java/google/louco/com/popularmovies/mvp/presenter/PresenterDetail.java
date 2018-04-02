@@ -28,7 +28,7 @@ public class PresenterDetail extends MvpPresenter<ViewDetail> {
     private static final String URL_YOUTUBE = BuildConfig.URL_YOUTUBE;
 
     private static final String CONTENT_AUTHORITY = BuildConfig.URI_CONTENT;
-    private static final Uri BASE_CONTENT_URI = Uri.parse("content://" + CONTENT_AUTHORITY);
+    public static final Uri BASE_CONTENT_URI = Uri.parse("content://" + CONTENT_AUTHORITY);
 
     public PresenterDetail() {
         getViewState().getIntentMovie();
@@ -56,7 +56,6 @@ public class PresenterDetail extends MvpPresenter<ViewDetail> {
         if (cursor.getCount() > 0) {
             movie.switchFavorite();
         }
-
         getViewState().showDetail(movie);
     }
 

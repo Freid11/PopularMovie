@@ -8,6 +8,7 @@
         android:id="@+id/srl_refresh_movie"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_weight="1"
         app:srl_direction="bottom">
 
         <android.support.v7.widget.RecyclerView
@@ -17,4 +18,11 @@
             android:orientation="vertical" />
     </com.omadahealth.github.swipyrefreshlayout.library.SwipyRefreshLayout>
 
+    <com.eightbitlab.bottomnavigationbar.BottomNavigationBar
+        android:id="@+id/bottom_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        app:activeTabColor="@color/colorAccent"
+        app:inactiveTabColor="@color/bottomBarDefaultTextColor" />
 </LinearLayout>

@@ -11,6 +11,8 @@ import android.view.MenuItem;
 
 import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.arellomobile.mvp.presenter.InjectPresenter;
+import com.eightbitlab.bottomnavigationbar.BottomBarItem;
+import com.eightbitlab.bottomnavigationbar.BottomNavigationBar;
 import com.omadahealth.github.swipyrefreshlayout.library.SwipyRefreshLayout;
 
 import java.util.List;
@@ -24,7 +26,7 @@ import google.louco.com.popularmovies.mvp.presenter.PresenterDetail;
 import google.louco.com.popularmovies.mvp.presenter.PresenterMain;
 import google.louco.com.popularmovies.mvp.view.ViewMain;
 
-public class MainActivity extends MvpAppCompatActivity implements ViewMain{
+public class MainActivity extends MvpAppCompatActivity implements ViewMain {
 
     @InjectPresenter
     public PresenterMain presenterMain;
@@ -34,6 +36,9 @@ public class MainActivity extends MvpAppCompatActivity implements ViewMain{
 
     @BindView(R.id.rv_movie_list)
     RecyclerView recyclerView;
+
+    @BindView(R.id.bottom_bar)
+    BottomNavigationBar navigationBar;
 
     private RVAdapterMovie adapterMovie;
 
@@ -48,6 +53,27 @@ public class MainActivity extends MvpAppCompatActivity implements ViewMain{
         adapterMovie = new RVAdapterMovie(new OnClickMov());
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         recyclerView.setAdapter(adapterMovie);
+
+        BottomBarItem itPopular = new BottomBarItem(R.drawable.ic_toc, R.string.popular);
+        navigationBar.addTab(itPopular);
+        BottomBarItem itTOP = new BottomBarItem(R.drawable.ic_poll, R.string.top);
+        navigationBar.addTab(itTOP);
+        BottomBarItem itFavorite = new BottomBarItem(R.drawable.ic_star, R.string.favorite);
+        navigationBar.addTab(itFavorite);
+
+        navigationBar.setOnSelectListener(position -> {
+            switch (position) {
+                case 0:
+                    presenterMain.ClickMenuPopular();
+                    break;
+                case 1:
+                    presenterMain.ClickMenuTop();
+                    break;
+                case 2:
+                    presenterMain.ClickMenuFavorite(getContentResolver());
+                    break;
+            }
+        });
     }
 
     @Override
@@ -72,27 +98,7 @@ public class MainActivity extends MvpAppCompatActivity implements ViewMain{
         startActivity(intent);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater menuInflater  = getMenuInflater();
-        menuInflater.inflate(R.menu.main_menu, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.it_menu_popular:
-                presenterMain.ClickMenuPopular();
-                break;
-            case R.id.it_menu_top:
-                presenterMain.ClickMenuTop();
-                break;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    private class OnClickMov implements RVAdapterMovie.OnClickMovie{
+    private class OnClickMov implements RVAdapterMovie.OnClickMovie {
 
         @Override
         public void onClick(Movie movie) {

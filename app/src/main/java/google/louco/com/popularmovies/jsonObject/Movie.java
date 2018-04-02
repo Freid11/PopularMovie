@@ -1,6 +1,7 @@
 package google.louco.com.popularmovies.jsonObject;
 
 import android.content.ContentValues;
+import android.database.Cursor;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -109,6 +110,15 @@ public class Movie {
         contentValues.put(RELEASE_DATE, ReleaseDate);
 
         return contentValues;
+    }
+
+    public static Movie fromCursor(Cursor cursor){
+        return new Movie(cursor.getInt(cursor.getColumnIndex(ID_MOVIE)),
+                cursor.getString(cursor.getColumnIndex(TITLE)),
+                cursor.getString(cursor.getColumnIndex(IMAGE_URL)),
+                cursor.getString(cursor.getColumnIndex(OVERVIEW)),
+                cursor.getString(cursor.getColumnIndex(VOTE_AVERAGE)),
+                cursor.getString(cursor.getColumnIndex(RELEASE_DATE)));
     }
 
     @Override
