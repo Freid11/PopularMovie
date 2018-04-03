@@ -4,10 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 
 import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.arellomobile.mvp.presenter.InjectPresenter;
@@ -40,6 +36,7 @@ public class MainActivity extends MvpAppCompatActivity implements ViewMain {
     @BindView(R.id.bottom_bar)
     BottomNavigationBar navigationBar;
 
+
     private RVAdapterMovie adapterMovie;
 
     @Override
@@ -61,19 +58,7 @@ public class MainActivity extends MvpAppCompatActivity implements ViewMain {
         BottomBarItem itFavorite = new BottomBarItem(R.drawable.ic_star, R.string.favorite);
         navigationBar.addTab(itFavorite);
 
-        navigationBar.setOnSelectListener(position -> {
-            switch (position) {
-                case 0:
-                    presenterMain.ClickMenuPopular();
-                    break;
-                case 1:
-                    presenterMain.ClickMenuTop();
-                    break;
-                case 2:
-                    presenterMain.ClickMenuFavorite(getContentResolver());
-                    break;
-            }
-        });
+        navigationBar.setOnSelectListener(this::ActionPositionBar);
     }
 
     @Override
@@ -96,6 +81,27 @@ public class MainActivity extends MvpAppCompatActivity implements ViewMain {
         Intent intent = new Intent(this, DetailActivity.class);
         intent.putExtra(PresenterDetail.KEY_INTENT_MOVIE, movie.toJson());
         startActivity(intent);
+    }
+
+    @Override
+    public void setPositionBar(int position) {
+        navigationBar.selectTab(position, false);
+        ActionPositionBar(position);
+    }
+
+
+    private void ActionPositionBar(int position) {
+        switch (position) {
+            case PresenterMain.POPULAR_BAR:
+                presenterMain.ClickMenuPopular();
+                break;
+            case PresenterMain.TOP_BAR:
+                presenterMain.ClickMenuTop();
+                break;
+            case PresenterMain.FAVORITE_BAR:
+                presenterMain.ClickMenuFavorite(getContentResolver());
+                break;
+        }
     }
 
     private class OnClickMov implements RVAdapterMovie.OnClickMovie {

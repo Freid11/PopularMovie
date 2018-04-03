@@ -27,4 +27,6 @@ public interface ViewMain extends MvpView{
      * @param movie - Передаем фильм для детального просмотра
      */
     void showDetailMovie(Movie movie);
+
+    void setPositionBar(int position);
 }

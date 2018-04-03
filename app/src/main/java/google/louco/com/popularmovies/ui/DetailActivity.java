@@ -126,8 +126,10 @@ public class DetailActivity extends MvpAppCompatActivity implements ViewDetail {
 
     @Override
     public void showVideo(String url) {
-        Intent playVideo = new Intent(Intent.ACTION_VIEW,Uri.parse(url));
-        startActivity(playVideo);
+        Intent playVideo = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+        if (playVideo.resolveActivity(getPackageManager()) != null) {
+            startActivity(playVideo);
+        }
     }
 
     @Override
