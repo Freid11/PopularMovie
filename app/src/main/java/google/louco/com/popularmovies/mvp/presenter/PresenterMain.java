@@ -13,7 +13,10 @@ import google.louco.com.popularmovies.jsonObject.MainJson;
 import google.louco.com.popularmovies.jsonObject.Movie;
 import google.louco.com.popularmovies.mvp.model.RequestServer;
 import google.louco.com.popularmovies.mvp.view.ViewMain;
+import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.observers.DisposableObserver;
+import io.reactivex.schedulers.Schedulers;
 
 @InjectViewState
 public class PresenterMain extends MvpPresenter<ViewMain> {
@@ -54,16 +57,10 @@ public class PresenterMain extends MvpPresenter<ViewMain> {
     }
 
     public void ClickMenuFavorite(ContentResolver contentResolver) {
-        List<Movie> movies = new ArrayList<>();
-        Cursor cursor = contentResolver.query(PresenterDetail.BASE_CONTENT_URI,
-                null,
-                null,
-                null,
-                null);
-        while (cursor.moveToNext()) {
-            movies.add(Movie.fromCursor(cursor));
-        }
-        getViewState().rsMovieList(movies);
+        Observable.just(contentResolver)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new getFavoriteMovie());
     }
 
     private void RequestFilmList(StatusList statusList) {
@@ -119,5 +116,33 @@ public class PresenterMain extends MvpPresenter<ViewMain> {
         }
     }
 
+    private class getFavoriteMovie extends DisposableObserver<ContentResolver>{
+
+        @Override
+        public void onNext(ContentResolver contentResolver) {
+            List<Movie> movies = new ArrayList<>();
+            Cursor cursor = contentResolver.query(PresenterDetail.BASE_CONTENT_URI,
+                    null,
+                    null,
+                    null,
+                    null);
+
+            assert cursor != null;
+            while (cursor.moveToNext()) {
+                movies.add(Movie.fromCursor(cursor));
+            }
+            getViewState().rsMovieList(movies);
+        }
+
+        @Override
+        public void onError(Throwable e) {
+
+        }
+
+        @Override
+        public void onComplete() {
+
+        }
+    }
 }
 

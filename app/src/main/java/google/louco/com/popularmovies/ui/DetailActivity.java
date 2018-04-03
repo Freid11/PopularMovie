@@ -64,7 +64,6 @@ public class DetailActivity extends MvpAppCompatActivity implements ViewDetail {
         setContentView(R.layout.activity_detail);
         ButterKnife.bind(this);
 
-        //Cursor cursor = getContentResolver().query(BASE_CONTENT_URI, new String[]{Movie.TITLE, Movie.IMAGE_URL},null,null,null);
     }
 
     @Override

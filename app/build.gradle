@@ -74,6 +74,7 @@ dependencies {
     //SwipyRefreshLayout
     compile 'com.github.omadahealth:swipy:1.2.3@aar'
 
+
     compile 'com.eightbitlab:bottomnavigationbar:0.9.5'
 
 }
